@@ -1,0 +1,159 @@
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $line-default;
+  border-radius: $radius-lg;
+  background: $bg-surface;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: var(--gray-300);
+  }
+}
+
+.active {
+  border: 1.5px solid $brand-ink;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
+
+  &:hover {
+    border-color: $brand-ink;
+  }
+}
+
+.dragging {
+  z-index: 10;
+  box-shadow: $shadow-lg;
+  opacity: 0.95;
+}
+
+.main {
+  @include reset-button;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  text-align: left;
+  border-radius: $radius-lg;
+}
+
+.order {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid $text-primary;
+  background: $bg-surface;
+  @include text('caption', 'bold');
+
+  .active & {
+    background: $brand-accent;
+    border-color: $brand-ink;
+  }
+}
+
+.thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $bg-muted;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.time {
+  @include text('label');
+  color: $text-tertiary;
+}
+
+.name {
+  @include text('body-l', 'bold');
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.cat {
+  @include text('caption', 'medium');
+  color: $text-secondary;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: $space-2;
+}
+
+.tool {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  color: $text-tertiary;
+
+  &:hover {
+    background: $bg-muted;
+    color: $text-primary;
+  }
+}
+
+.handle {
+  cursor: grab;
+  touch-action: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// 편집 모드: 이미지와 부가 정보를 빼고 순서 바꾸기에 필요한 것만 남겨요
+.compact {
+  .main {
+    gap: 10px;
+    padding: 8px $space-3;
+  }
+
+  .order {
+    width: 26px;
+    height: 26px;
+  }
+
+  .info {
+    gap: 0;
+  }
+
+  .name {
+    @include text('body', 'bold');
+  }
+}

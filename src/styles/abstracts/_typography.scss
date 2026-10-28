@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use 'sass:list';
+
+// Figma 텍스트 스타일(Display/Heading/Title/Body/Caption/Label/Micro)을 그대로 옮긴 스케일
+$type-scale: (
+  'display': (56px, -2%),
+  'h1': (28px, -2%),
+  'h2': (22px, -2%),
+  'h3': (18px, -1%),
+  'title': (16px, -1%),
+  'body-l': (15px, -1%),
+  'body': (14px, -1%),
+  'body-s': (13px, -1%),
+  'caption': (12px, 0),
+  'label': (11px, 0),
+  'micro': (10px, 0),
+);
+
+$weights: (
+  'regular': 400,
+  'medium': 500,
+  'bold': 700,
+  'black': 900,
+);
+
+@mixin text($style, $weight: 'regular') {
+  $spec: map.get($type-scale, $style);
+  font-size: list.nth($spec, 1);
+  letter-spacing: list.nth($spec, 2);
+  font-weight: map.get($weights, $weight);
+  line-height: 1.45;
+}
+
+@mixin overline {
+  @include text('label', 'medium');
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}

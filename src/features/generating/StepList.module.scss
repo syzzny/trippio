@@ -1,0 +1,89 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: 10px 0;
+  border-bottom: 1px solid $line-default;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.status {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid $line-default;
+}
+
+.done .status {
+  background: $brand-ink;
+  border-color: $brand-ink;
+  color: $text-inverse;
+}
+
+.running .status {
+  border-color: $brand-ink;
+}
+
+.failed .status {
+  background: $status-danger-subtle;
+  border-color: $status-danger;
+  color: $status-danger;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $brand-ink;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  @include text('body', 'medium');
+
+  .todo & {
+    font-weight: 400;
+    color: $text-tertiary;
+  }
+}
+
+.note {
+  @include text('caption');
+  color: $text-tertiary;
+
+  .failed & {
+    color: $status-danger;
+  }
+}
+
+.badge {
+  @include text('label', 'medium');
+  color: $text-secondary;
+  padding-top: 3px;
+}

@@ -1,0 +1,323 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  height: 100%;
+  padding: 22px $space-5 $space-5;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 32px;
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.back {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: $radius-sm;
+  @include text('caption', 'medium');
+  color: $text-secondary;
+
+  &:hover {
+    background: $bg-muted;
+    color: $text-primary;
+  }
+}
+
+.iconBtn {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $line-default;
+  border-radius: $radius-sm;
+
+  &:hover {
+    background: $bg-muted;
+  }
+}
+
+.overline {
+  @include overline;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  @include text('h1', 'bold');
+}
+
+.badgeFace {
+  width: 16px;
+  height: 16px;
+  margin-left: -4px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.aiBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: $radius-full;
+  border: 1px solid var(--primary-300);
+  background: $brand-accent-subtle;
+  @include text('label', 'bold');
+  color: $brand-accent-text;
+}
+
+.meta {
+  @include text('body-s');
+  color: $text-secondary;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 0;
+  @include text('caption');
+  color: $text-tertiary;
+
+  span + span::before {
+    content: '·';
+    margin: 0 6px;
+  }
+
+  b {
+    margin-right: 1px;
+    @include text('caption', 'bold');
+    color: $text-primary;
+  }
+}
+
+.headerCompact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.titleCompact {
+  @include text('h3', 'bold');
+}
+
+.editingLabel {
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.dayHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-2;
+}
+
+.dayTitle {
+  @include text('title', 'bold');
+}
+
+.weather {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  @include text('body-s');
+  color: $text-secondary;
+  white-space: nowrap;
+
+  b {
+    color: $text-primary;
+  }
+}
+
+.dayStats {
+  display: none;
+  @include text('caption');
+  color: $text-tertiary;
+  white-space: nowrap;
+}
+
+@include mobile {
+  .weather {
+    display: none;
+  }
+
+  .dayStats {
+    display: inline;
+  }
+
+  // 큰 헤더는 지도 위 상단 바가 대신해요 (편집 중 한 줄 헤더는 유지)
+  .header {
+    display: none;
+  }
+
+  .panel {
+    height: auto;
+    gap: $space-3;
+    padding: $space-3 $space-5 0;
+  }
+}
+
+/* ───────── 모바일 지도 상단 바 ───────── */
+
+.mobileTop {
+  display: none;
+
+  @include mobile {
+    position: absolute;
+    top: calc(env(safe-area-inset-top) + 12px);
+    left: $space-4;
+    right: $space-4;
+    z-index: 600;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+}
+
+.roundBtn {
+  @include reset-button;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $bg-surface;
+  box-shadow: $shadow-md;
+}
+
+.titlePill {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  height: 44px;
+  padding: 0 $space-4;
+  border-radius: $radius-full;
+  background: $bg-surface;
+  box-shadow: $shadow-md;
+
+  b {
+    @include text('body', 'bold');
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    @include text('body-s', 'bold');
+  }
+}
+
+.pillIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.weatherIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.rain {
+  color: $brand-sky;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 (-$space-1);
+  padding: 2px $space-1;
+
+  // 모바일은 페이지 전체가 스크롤돼요
+  @include mobile {
+    flex: none;
+    overflow-y: visible;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+}
+
+
+// AI 수정 결과 안내 — 무엇이 바뀌었는지 알려주고 되돌릴 수 있게 해요
+.toast {
+  position: fixed;
+  left: 50%;
+  top: $space-6;
+  z-index: 900;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  max-width: min(560px, calc(100vw - 32px));
+
+  @include mobile {
+    top: auto;
+    bottom: calc(var(--tabbar-h) + 84px);
+    width: max-content;
+  }
+  padding: 10px 10px 10px $space-4;
+  border-radius: $radius-full;
+  background: $brand-ink;
+  color: $text-inverse;
+  @include text('body-s', 'medium');
+  box-shadow: $shadow-md;
+
+  &:empty {
+    display: none;
+  }
+
+  button {
+    @include reset-button;
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: $radius-full;
+    background: rgb(255 255 255 / 16%);
+    @include text('body-s', 'bold');
+
+    &:hover {
+      background: rgb(255 255 255 / 26%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $text-inverse;
+      outline-offset: 2px;
+    }
+  }
+}

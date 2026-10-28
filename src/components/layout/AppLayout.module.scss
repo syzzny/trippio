@@ -1,0 +1,37 @@
+.app {
+  display: flex;
+  gap: $space-3;
+  height: 100vh;
+  min-height: 640px;
+  padding: $space-3;
+
+  @include mobile {
+    padding: 0 0 var(--tabbar-h);
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.skip {
+  @include visually-hidden;
+
+  &:focus {
+    position: fixed !important;
+    top: $space-3;
+    left: $space-3;
+    width: auto;
+    height: auto;
+    clip: auto;
+    padding: $space-2 $space-3;
+    background: $bg-surface;
+    border: 1px solid $brand-ink;
+    border-radius: $radius-sm;
+    z-index: 1000;
+  }
+}

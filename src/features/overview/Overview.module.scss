@@ -1,0 +1,567 @@
+// 05 · 내 여행 한눈에 — 카드 공통 스타일
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  min-width: 0;
+  padding: 22px $space-6;
+  background: $bg-surface;
+  border: 1px solid $line-default;
+  border-radius: $radius-xl;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  @include text('title', 'bold');
+}
+
+.cardSub {
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  @include text('caption', 'medium');
+  color: $text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    border-radius: 4px;
+  }
+}
+
+.count {
+  @include text('body-s', 'bold');
+  color: $text-secondary;
+}
+
+.note,
+.tipBox {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: auto;
+  padding: 9px $space-3;
+  border-radius: $radius-md;
+  background: $bg-muted;
+  @include text('caption');
+  color: $text-secondary;
+
+  svg {
+    flex-shrink: 0;
+    color: $text-tertiary;
+  }
+}
+
+/* ───────── D-day ───────── */
+
+.dday {
+  gap: 0;
+  overflow: hidden;
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--primary-50) 0%, var(--sky-50) 100%);
+}
+
+.ddayLead {
+  @include text('body-s', 'medium');
+  color: $text-secondary;
+}
+
+.ddayBig {
+  margin-top: 4px;
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.ddayMeta {
+  margin-top: 6px;
+  @include text('body-s');
+  color: $text-secondary;
+}
+
+.prep {
+  position: relative;
+  z-index: 1;
+  width: min(220px, 55%);
+  margin-top: auto;
+  padding-top: $space-6;
+}
+
+.prepLabel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $space-2;
+  @include text('caption', 'medium');
+  color: $text-secondary;
+
+  b {
+    color: $text-primary;
+  }
+}
+
+.track {
+  height: 8px;
+  border-radius: $radius-full;
+  background: rgb(255 255 255 / 85%);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-500);
+    transition: width 0.3s ease;
+  }
+}
+
+.ddayHero {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 168px;
+  height: 168px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ───────── 날씨 ───────── */
+
+.weatherDays {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
+  gap: $space-2;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 4px 12px;
+    border-radius: 14px;
+    background: $bg-muted;
+  }
+
+  .rainyDay {
+    background: $brand-sky-subtle;
+
+    .wRain {
+      color: var(--sky-700);
+    }
+  }
+}
+
+.wDate {
+  @include text('caption', 'medium');
+  color: $text-secondary;
+}
+
+.wIcon {
+  width: 52px;
+  height: 52px;
+  margin: 2px 0;
+}
+
+.wTemp {
+  @include text('caption');
+  color: $text-tertiary;
+
+  b {
+    margin-right: 2px;
+    @include text('title', 'bold');
+    color: $text-primary;
+  }
+}
+
+.wRain {
+  @include text('label');
+  color: $text-tertiary;
+}
+
+/* ───────── 환전 ───────── */
+
+.fxTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.fxAmount {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+  }
+
+  b {
+    @include text('h1', 'bold');
+    line-height: 1.25;
+  }
+
+  small {
+    @include text('body-s');
+    color: $text-secondary;
+  }
+}
+
+.fxIcon {
+  width: 64px;
+  height: 64px;
+}
+
+.fxRate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  @include text('caption');
+  color: $text-secondary;
+
+  i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary-500);
+  }
+}
+
+.fxBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+  padding: 10px 14px;
+  border-radius: $radius-md;
+  background: $bg-muted;
+
+  b {
+    @include text('body-s', 'bold');
+  }
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+  }
+}
+
+/* ───────── 하이라이트 ───────── */
+
+.hlList {
+  display: flex;
+  flex-direction: column;
+
+  li + li {
+    border-top: 1px solid $line-default;
+  }
+}
+
+.hlRow {
+  display: grid;
+  grid-template-columns: 82px 36px minmax(0, 1fr) 96px 150px;
+  align-items: center;
+  gap: $space-4;
+  padding: 10px 6px;
+  margin: 0 -6px;
+  border-radius: $radius-md;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    background: $bg-muted;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.dayBadge {
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  background: $bg-muted;
+  @include text('label', 'bold');
+  color: $text-secondary;
+  white-space: nowrap;
+}
+
+.hlIcon {
+  width: 36px;
+  height: 36px;
+}
+
+.hlText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  b {
+    @include text('body', 'bold');
+  }
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.hlWalk {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  @include text('caption');
+  color: $text-tertiary;
+  white-space: nowrap;
+}
+
+.hlSpend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hlSpendLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+
+  b {
+    @include text('body-s', 'bold');
+  }
+
+  em {
+    padding: 1px 7px;
+    border-radius: $radius-full;
+    background: $status-danger-subtle;
+    @include text('label', 'bold');
+    font-style: normal;
+    color: $status-danger;
+    white-space: nowrap;
+  }
+}
+
+.bar {
+  height: 6px;
+  border-radius: $radius-full;
+  background: var(--gray-100);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-400);
+  }
+}
+
+.barOver span {
+  background: var(--coral-700);
+}
+
+/* ───────── 예산 ───────── */
+
+.budgetBody {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+}
+
+.donut {
+  position: relative;
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.donutChart {
+  width: 100%;
+  height: 100%;
+}
+
+.donutCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  b {
+    @include text('h2', 'bold');
+    line-height: 1.2;
+  }
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+  }
+}
+
+.legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    display: grid;
+    grid-template-columns: 8px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    @include text('body-s');
+    color: $text-secondary;
+  }
+
+  i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  b {
+    color: $text-primary;
+    @include text('body-s', 'bold');
+  }
+}
+
+/* ───────── 준비물 ───────── */
+
+.checkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px $space-6;
+}
+
+/* ───────── 먹거리 ───────── */
+
+.foods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px 14px;
+    border-radius: $radius-lg;
+    background: $bg-muted;
+    text-align: center;
+  }
+
+  b {
+    margin-top: 4px;
+    @include text('body', 'bold');
+  }
+
+  span {
+    @include text('label');
+    color: $text-tertiary;
+  }
+
+  small {
+    margin-top: 2px;
+    @include text('caption', 'medium');
+    color: $text-secondary;
+  }
+}
+
+.foodImg {
+  width: 64px;
+  height: 64px;
+}
+
+/* ───────── 팁 ───────── */
+
+.tips {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include text('body-s');
+    color: $text-secondary;
+  }
+}
+
+.tipIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-sm;
+  background: $bg-muted;
+  color: $text-secondary;
+}
+
+/* ───────── 반응형 ───────── */
+
+@include tablet {
+  .hlRow {
+    grid-template-columns: 82px 36px minmax(0, 1fr) 120px;
+  }
+
+  .hlWalk {
+    display: none;
+  }
+}
+
+@include mobile {
+  .hlRow {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: $space-1 $space-3;
+  }
+
+  .dayBadge {
+    grid-column: 1 / -1;
+  }
+
+  .hlSpend {
+    grid-column: 2;
+  }
+
+  .budgetBody {
+    flex-direction: column;
+    align-items: stretch;
+
+    .donut {
+      align-self: center;
+    }
+  }
+
+  .ddayHero {
+    width: 120px;
+    height: 120px;
+  }
+}

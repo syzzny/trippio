@@ -1,0 +1,54 @@
+.chip {
+  @include reset-button;
+  @include text('body-s');
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid $line-default;
+  background: $bg-surface;
+  color: $text-secondary;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--gray-300);
+  }
+
+  &:disabled {
+    background: $bg-muted;
+    border-color: transparent;
+    color: $text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.rounded {
+  min-height: 40px;
+  padding: 0 10px;
+  white-space: nowrap;
+  border-radius: $radius-md;
+}
+
+.pill {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: $radius-full;
+  box-shadow: $shadow-sm;
+}
+
+.selected {
+  @include text('body-s', 'medium');
+  background: $bg-muted;
+  border-color: $brand-ink;
+  color: $text-primary;
+
+  &:hover {
+    border-color: $brand-ink;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}

@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  @include visually-hidden;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: $space-3 14px;
+  border: 1px solid $line-default;
+  border-radius: $radius-md;
+  background: $bg-surface;
+
+  &:focus-within {
+    border-color: $brand-ink;
+    box-shadow: 0 0 0 0.5px $brand-ink;
+  }
+}
+
+.input {
+  min-height: 60px;
+  resize: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  @include text('body-s');
+  line-height: 1.55;
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+}
+
+.count {
+  align-self: flex-end;
+  @include text('micro');
+  color: $text-tertiary;
+}

@@ -1,0 +1,49 @@
+.control {
+  position: absolute;
+  right: $space-4;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $line-default;
+  border-radius: 14px;
+  background: $bg-surface;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+}
+
+.topright {
+  top: $space-4;
+}
+
+.bottomright {
+  bottom: $space-6;
+}
+
+.button {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 42px;
+  color: $text-primary;
+  transition: background-color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: $bg-muted;
+  }
+
+  &:disabled {
+    color: var(--gray-300);
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
+.divider {
+  height: 1px;
+  background: $line-default;
+}

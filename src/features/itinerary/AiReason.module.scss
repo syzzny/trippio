@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: $radius-sm;
+  background: $brand-accent-subtle;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  @include text('body-s', 'bold');
+  color: $brand-accent-text;
+}
+
+.text {
+  @include text('caption', 'medium');
+  line-height: 1.5;
+}
+
+.face {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -1,0 +1,70 @@
+// Figma 변수 "Trippio / Semantic"과 1:1로 대응하는 SCSS 토큰.
+// 실제 값은 global.scss의 CSS 커스텀 프로퍼티에 있고, 여기서는 참조만 해요.
+
+// Background
+$bg-canvas: var(--color-bg-canvas);
+$bg-surface: var(--color-bg-surface);
+$bg-muted: var(--color-bg-muted);
+
+// Text
+$text-primary: var(--color-text-primary);
+$text-secondary: var(--color-text-secondary);
+$text-tertiary: var(--color-text-tertiary);
+$text-inverse: var(--color-text-inverse);
+$text-disabled: var(--gray-400);
+
+// Line
+$line-default: var(--color-line-default);
+
+// Brand — accent(민트)는 화면당 최종 액션 1개에만 사용
+$brand-ink: var(--color-brand-ink);
+$brand-accent: var(--color-brand-accent);
+$brand-accent-strong: var(--color-brand-accent-strong);
+$brand-accent-subtle: var(--color-brand-accent-subtle);
+$brand-accent-muted: var(--color-brand-accent-muted);
+$brand-accent-text: var(--color-brand-accent-text);
+$brand-sky: var(--color-brand-sky);
+$brand-sky-subtle: var(--color-brand-sky-subtle);
+
+// Status
+$status-success: var(--color-status-success);
+$status-warning: var(--color-status-warning);
+$status-danger: var(--color-status-danger);
+$status-danger-subtle: var(--color-status-danger-subtle);
+
+// Category
+$category-food: var(--color-category-food);
+$category-nature: var(--color-category-nature);
+$category-culture: var(--color-category-culture);
+$category-cafe: var(--color-category-cafe);
+$category-shopping: var(--color-category-shopping);
+$category-transport: var(--color-category-transport);
+
+// Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 999px;
+
+// Spacing (4px base)
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+
+// Elevation
+$shadow-sm: 0 2px 8px rgb(0 0 0 / 6%);
+$shadow-md: 0 8px 24px rgb(0 0 0 / 10%);
+$shadow-lg: 0 16px 48px rgb(0 0 0 / 14%);
+
+// Layout
+$panel-width: 400px;
+$rail-width: 56px;
+
+// Breakpoints
+$bp-tablet: 1024px;
+$bp-mobile: 768px;

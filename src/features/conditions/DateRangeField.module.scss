@@ -1,0 +1,56 @@
+.row {
+  display: flex;
+  gap: $space-2;
+}
+
+.field {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid $line-default;
+  border-radius: $radius-md;
+  cursor: pointer;
+
+  &:focus-within {
+    border-color: $brand-ink;
+    box-shadow: 0 0 0 0.5px $brand-ink;
+  }
+}
+
+.icon {
+  color: $text-secondary;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @include text('label');
+  color: $text-tertiary;
+}
+
+.value {
+  @include text('body-l', 'bold');
+}
+
+// 네이티브 달력을 쓰되 겉모습은 디자인대로: 입력 자체는 투명하게 덮어둬요
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}

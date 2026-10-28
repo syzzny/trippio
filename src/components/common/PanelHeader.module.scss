@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.overline {
+  @include overline;
+}
+
+.title {
+  @include text('h1', 'bold');
+}
+
+.titleMd {
+  @include text('h2', 'bold');
+}
+
+.desc {
+  @include text('body-s');
+  color: $text-secondary;
+  line-height: 1.55;
+}

@@ -1,0 +1,134 @@
+.wrap {
+  position: absolute;
+  left: 462px;
+  right: $space-4;
+  bottom: $space-4;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  @include tablet {
+    left: $space-4;
+  }
+
+  // 모바일: 시트가 지도 아래를 20px 덮으므로 그만큼 띄워요
+  @include mobile {
+    left: $space-3;
+    right: $space-3;
+    bottom: 32px;
+    gap: 6px;
+  }
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  // 모바일은 한 줄로 두고 옆으로 넘겨 봐요
+  @include mobile {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    li {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.suggestion {
+  @include reset-button;
+  @include text('caption', 'medium');
+  padding: 6px 12px;
+  border: 1px solid $line-default;
+  border-radius: $radius-full;
+  background: $bg-surface;
+  color: $text-secondary;
+  box-shadow: $shadow-sm;
+
+  &:hover:not(:disabled) {
+    color: $text-primary;
+    border-color: var(--gray-300);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+
+  @include mobile {
+    height: 48px;
+  }
+  padding: 0 8px 0 10px;
+  border: 1px solid $line-default;
+  border-radius: $radius-lg;
+  background: $bg-surface;
+  box-shadow: $shadow-md;
+
+  &:focus-within {
+    border-color: $brand-ink;
+  }
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  @include text('body-s');
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+}
+
+// 화면의 포인트 색(민트)은 '여행 한눈에 보기' 버튼 하나에만 써서, 전송 버튼은 무채색으로
+.send {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: $brand-ink;
+  color: $text-inverse;
+  flex-shrink: 0;
+
+  &:disabled {
+    background: var(--gray-100);
+    color: $text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

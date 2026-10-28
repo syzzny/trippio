@@ -1,0 +1,250 @@
+.drawer {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+  bottom: $space-4;
+  z-index: 1100;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-xl;
+  background: $bg-surface;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+  animation: slide-in 0.2s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include mobile {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 1300;
+    width: 100%;
+    max-height: 85vh;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-radius: $radius-xl $radius-xl 0 0;
+    animation: sheet-up 0.2s ease-out;
+  }
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1250;
+  background: rgb(34 34 34 / 32%);
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-4 $space-5 $space-3;
+}
+
+.overline {
+  @include overline;
+}
+
+.close {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: $bg-muted;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: 0 $space-5 $space-4;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+// 위키미디어 사진 출처 (저작자 · 라이선스)
+.credit {
+  @include text('micro');
+  color: $text-tertiary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  a {
+    color: inherit;
+  }
+}
+
+.photo {
+  width: 100%;
+  height: 180px;
+  border-radius: $radius-lg;
+  object-fit: cover;
+  background: $bg-muted;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name {
+  @include text('h2', 'bold');
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  @include text('body-s', 'medium');
+  color: $text-secondary;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.desc {
+  @include text('body');
+  color: $text-secondary;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  li {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: $bg-muted;
+    @include text('label', 'medium');
+    color: $text-secondary;
+  }
+}
+
+.info {
+  margin: 0;
+  padding: $space-1 $space-4;
+  border: 1px solid $line-default;
+  border-radius: $radius-lg;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid $line-default;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  dt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 96px;
+    flex-shrink: 0;
+    @include text('body-s');
+    color: $text-tertiary;
+  }
+
+  dd {
+    margin: 0;
+    @include text('body-s', 'medium');
+  }
+}
+
+.subTitle {
+  @include text('body', 'bold');
+  margin-bottom: 10px;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-2;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: $space-2;
+    border-radius: 14px;
+    background: $bg-muted;
+  }
+}
+
+.menuImg {
+  width: 44px;
+  height: 44px;
+}
+
+.menuName {
+  @include text('caption', 'bold');
+  text-align: center;
+}
+
+.menuPrice {
+  @include text('micro', 'medium');
+  color: $text-tertiary;
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+  padding: $space-4 $space-5 $space-5;
+  border-top: 1px solid $line-default;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  height: 52px;
+  padding: 0 $space-5;
+  border: 1px solid $line-default;
+  border-radius: 14px;
+  @include text('body-l', 'medium');
+  color: $text-primary;
+  text-decoration: none;
+
+  &:hover {
+    background: $bg-muted;
+  }
+}

@@ -1,0 +1,131 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  padding: 22px $space-6 $space-6;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.back {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  @include text('body-s', 'medium');
+  color: $text-secondary;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 400;
+  background: rgb(255 255 255 / 55%);
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 500;
+  transform: translate(-50%, -50%);
+  width: min(440px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border-radius: $radius-xl;
+  background: $bg-surface;
+  box-shadow: $shadow-lg;
+
+  // 모바일: 지도 위에 겹치지 않고 흐름대로 놓아 카드가 잘리지 않게 해요
+  @include mobile {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    margin: $space-4 $space-4 36px;
+    padding: $space-5;
+  }
+}
+
+.illust {
+  width: 120px;
+  height: 120px;
+  margin: -8px 0 -8px -8px;
+}
+
+.float {
+  animation: float 2.4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  @include text('h2', 'bold');
+}
+
+.desc {
+  @include text('body-s');
+  color: $text-secondary;
+  line-height: 1.55;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  @include text('body-s', 'bold');
+}
+
+.muted {
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.track {
+  height: 6px;
+  border-radius: 3px;
+  background: $bg-muted;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: $brand-accent-strong;
+  transition: width 0.4s ease;
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+}
+
+.hint {
+  @include text('caption');
+  color: $text-tertiary;
+  text-align: center;
+}

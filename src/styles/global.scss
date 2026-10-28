@@ -1,0 +1,152 @@
+// Figma "Trippio / Primitives" → "Trippio / Semantic" 구조 그대로
+:root {
+  // Primitives · Primary (Aqua Mint)
+  --primary-50: #edfcfb;
+  --primary-100: #d2f7f5;
+  --primary-200: #a8eeeb;
+  --primary-300: #74e3df;
+  --primary-400: #4fe0dc;
+  --primary-500: #26c2bd;
+  --primary-600: #1aa19e;
+  --primary-700: #18817f;
+  --primary-800: #186766;
+  --primary-900: #175554;
+  // Sky
+  --sky-50: #eef8ff;
+  --sky-100: #d9efff;
+  --sky-300: #8acfff;
+  --sky-500: #38a9f5;
+  --sky-700: #1b78bf;
+  // Coral · Sun
+  --coral-50: #fff3ef;
+  --coral-500: #ff7a59;
+  --coral-700: #d9502f;
+  --sun-500: #ffb020;
+  // Neutral
+  --gray-0: #ffffff;
+  --gray-50: #f7f8fa;
+  --gray-100: #f1f3f5;
+  --gray-200: #e7eaee;
+  --gray-300: #d5dae0;
+  --gray-400: #adb4bd;
+  --gray-500: #8a929c;
+  --gray-600: #6b7280;
+  --gray-700: #4b5260;
+  --gray-900: #222222;
+
+  // Semantic
+  --color-bg-canvas: var(--gray-0);
+  --color-bg-surface: var(--gray-0);
+  --color-bg-muted: var(--gray-50);
+  --color-text-primary: var(--gray-900);
+  --color-text-secondary: var(--gray-600);
+  --color-text-tertiary: var(--gray-500);
+  --color-text-inverse: var(--gray-0);
+  --color-line-default: var(--gray-200);
+  --color-brand-ink: var(--gray-900);
+  --color-brand-accent: var(--primary-400);
+  --color-brand-accent-strong: var(--primary-500);
+  --color-brand-accent-subtle: var(--primary-50);
+  --color-brand-accent-muted: var(--primary-100);
+  --color-brand-accent-text: var(--primary-800);
+  --color-brand-sky: var(--sky-500);
+  --color-brand-sky-subtle: var(--sky-50);
+  --color-status-success: var(--primary-600);
+  --color-status-warning: var(--sun-500);
+  --color-status-danger: var(--coral-700);
+  --color-status-danger-subtle: var(--coral-50);
+  --color-category-food: #ff8a65;
+  --color-category-nature: #4cc38a;
+  --color-category-culture: #8e7ce6;
+  --color-category-cafe: #d4a373;
+  --color-category-shopping: #f27ba8;
+  --color-category-transport: #8acfff;
+}
+
+// 모바일 하단 탭 바 높이 — 고정 요소들이 탭 바 위로 올라오도록 함께 써요
+:root {
+  --tabbar-h: 0px;
+
+  @include mobile {
+    --tabbar-h: calc(64px + env(safe-area-inset-bottom));
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+  color: $text-primary;
+  background: $bg-canvas;
+  -webkit-font-smoothing: antialiased;
+  @include text('body');
+}
+
+h1, h2, h3, h4, p, ul, ol, figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+// fieldset은 기본값이 min-width: min-content라 좁은 화면에서 폭이 넘쳐요
+fieldset {
+  min-width: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  @include visually-hidden;
+}
+
+/* 모바일에서 화면 아래(탭 바 위)에 붙는 주요 버튼 영역 */
+.mobile-sticky-cta {
+  @include mobile {
+    position: sticky;
+    bottom: var(--tabbar-h);
+    z-index: 20;
+    margin: 0 (-$space-5);
+    padding: $space-3 $space-5;
+    padding-bottom: $space-4;
+    background: $bg-surface;
+    box-shadow: 0 -8px 16px rgb(255 255 255 / 90%);
+  }
+}

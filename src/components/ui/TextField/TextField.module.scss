@@ -1,0 +1,70 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  @include text('body', 'bold');
+}
+
+.hidden {
+  @include visually-hidden;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  padding: 0 $space-4;
+  border: 1px solid $line-default;
+  border-radius: $radius-md;
+  background: $bg-surface;
+  transition: border-color 0.15s ease;
+
+  &:focus-within {
+    border-color: $brand-ink;
+    box-shadow: 0 0 0 0.5px $brand-ink;
+  }
+}
+
+.error {
+  border-color: $status-danger;
+
+  &:focus-within {
+    border-color: $status-danger;
+    box-shadow: 0 0 0 0.5px $status-danger;
+  }
+}
+
+.disabled {
+  background: $bg-muted;
+}
+
+.icon {
+  display: inline-flex;
+  color: $text-tertiary;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  @include text('body');
+
+  &::placeholder {
+    color: $text-tertiary;
+  }
+}
+
+.desc {
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.descError {
+  color: $status-danger;
+}

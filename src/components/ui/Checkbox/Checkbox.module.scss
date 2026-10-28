@@ -1,0 +1,45 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  cursor: pointer;
+}
+
+.input {
+  @include visually-hidden;
+}
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid $line-default;
+  border-radius: 6px;
+  background: $bg-surface;
+  color: transparent;
+}
+
+.label {
+  @include text('body-s');
+}
+
+.input:checked + .box {
+  background: $brand-ink;
+  border-color: $brand-ink;
+  color: $text-inverse;
+}
+
+.input:checked ~ .label {
+  color: $text-tertiary;
+}
+
+.input:focus-visible + .box {
+  @include focus-ring;
+}
+
+.input:disabled ~ * {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

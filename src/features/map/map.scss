@@ -1,0 +1,179 @@
+// Leaflet이 만드는 DOM은 CSS Module 밖이라 전역 클래스로 스타일링해요.
+.trippio-map {
+  position: absolute;
+  inset: 0;
+
+  .leaflet-container {
+    font-family: inherit;
+    background: var(--sky-100);
+  }
+
+  // 회색 바다 → 연한 하늘색, 밝은 육지 → 거의 흰색
+  .leaflet-tile-pane {
+    filter: brightness(1.1) sepia(0.35) hue-rotate(178deg) saturate(2);
+  }
+
+  // 한국 지도(OpenStreetMap 타일): 색을 빼고 대비를 낮춰 같은 톤으로 맞춰요
+  &.is-street .leaflet-tile-pane {
+    filter: grayscale(1) contrast(0.7) brightness(1.2) sepia(0.35) hue-rotate(178deg) saturate(2);
+  }
+
+  .leaflet-control-attribution {
+    font-size: 10px;
+    background: rgb(255 255 255 / 70%);
+  }
+}
+
+// 여행지 핀: 3D 썸네일 + 이름 라벨
+.dest-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 0;
+  transform: translate(-50%, -20px);
+  width: max-content;
+  cursor: pointer;
+
+  &__thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 18%);
+    display: block;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__label {
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  &.is-selected {
+    transform: translate(-50%, -27px);
+    z-index: 1000;
+
+    .dest-pin__thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      border: 4px solid var(--color-brand-accent);
+    }
+
+    .dest-pin__label {
+      background: var(--color-text-primary);
+      color: #fff;
+    }
+  }
+
+  &:hover .dest-pin__thumb {
+    transform: scale(1.06);
+  }
+
+  &__thumb {
+    transition: transform 0.15s ease;
+  }
+}
+
+.origin-pin {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  // 점이 좌표에 오고, 라벨은 왼쪽으로 (가까운 도착지 핀과 겹치지 않게)
+  transform: translate(calc(-100% + 6px), -6px);
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-text-primary);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+  }
+
+  &__label {
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+
+    b {
+      color: var(--color-text-primary);
+      margin-left: 4px;
+    }
+  }
+}
+
+// leaflet divIcon 기본 스타일 제거
+.leaflet-div-icon.trippio-icon {
+  background: none;
+  border: 0;
+}
+
+// 일정 번호 마커: 흰 원 + 진한 숫자, 선택 시 민트
+.stop-marker {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid var(--color-text-primary);
+  background: #fff;
+  color: var(--color-text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 18%);
+  cursor: pointer;
+
+  &.is-active {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    background: var(--color-brand-accent);
+  }
+}
+
+.leaflet-tooltip.stop-tooltip {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--color-text-primary);
+
+  span {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+  }
+
+  &::before {
+    display: none;
+  }
+}
+
+// 모바일: 지도 위 상단 바(뒤로가기·제목)와 겹치지 않게 확대/축소 버튼을 아래로 내려요
+@include mobile {
+  .leaflet-top {
+    top: 64px;
+  }
+}

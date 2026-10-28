@@ -1,0 +1,281 @@
+/* ───────── 여행 카드 ───────── */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid $line-default;
+  border-radius: $radius-xl;
+  background: $bg-surface;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--gray-300);
+    box-shadow: $shadow-md;
+  }
+
+  &:focus-within:has(.stretch:focus-visible) {
+    @include focus-ring;
+  }
+}
+
+.cover {
+  position: relative;
+  height: 200px;
+
+  @include mobile {
+    height: 150px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tone0 {
+  background: linear-gradient(120deg, var(--primary-50), var(--sky-50));
+}
+
+.tone1 {
+  background: linear-gradient(120deg, #fff8e6, var(--primary-50));
+}
+
+.tone2 {
+  background: linear-gradient(120deg, #f1efff, #fff1f3);
+}
+
+.coverArt {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.dday {
+  position: absolute;
+  top: $space-4;
+  left: $space-4;
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  background: $bg-surface;
+  @include text('caption', 'bold');
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $space-4 $space-5 $space-5;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  @include text('h3', 'bold');
+}
+
+// 카드 어디를 눌러도 열리도록 버튼 영역을 카드 전체로 넓혀요
+.stretch {
+  @include reset-button;
+  font-weight: inherit;
+  text-align: left;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.aiChip {
+  padding: 2px 7px;
+  border-radius: $radius-full;
+  background: $bg-muted;
+  @include text('micro', 'medium');
+  color: $text-tertiary;
+}
+
+.dates {
+  @include text('body-s');
+  color: $text-secondary;
+}
+
+.meta {
+  @include text('caption');
+  color: $text-tertiary;
+}
+
+.prep {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-top: $space-3;
+  @include text('caption', 'medium');
+  color: $text-secondary;
+}
+
+.prepTrack {
+  width: 100px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: var(--gray-100);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary-500);
+  }
+}
+
+.remove {
+  @include reset-button;
+  position: absolute;
+  top: $space-3;
+  right: $space-3;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: rgb(255 255 255 / 85%);
+  color: $text-tertiary;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  .card:hover &,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  &:hover {
+    color: $status-danger;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  // 마우스가 없는 기기에서는 항상 보여요
+  @media (hover: none) {
+    opacity: 1;
+  }
+}
+
+/* ───────── 추천 여행지 ───────── */
+
+.rec {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: 10px $space-3 10px 10px;
+  border: 1px solid $line-default;
+  border-radius: $radius-lg;
+  background: $bg-surface;
+  text-align: left;
+
+  &:hover {
+    border-color: var(--gray-300);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.recImg {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: $radius-md;
+  object-fit: cover;
+}
+
+.recText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+
+  b {
+    @include text('body', 'bold');
+  }
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.recArrow {
+  flex-shrink: 0;
+  color: $text-tertiary;
+}
+
+/* ───────── 지난 여행 ───────── */
+
+.past {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4;
+  border-radius: $radius-lg;
+  background: $bg-muted;
+}
+
+.pastImg {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: $radius-md;
+  object-fit: cover;
+}
+
+.pastText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+
+  b {
+    @include text('body-l', 'bold');
+  }
+
+  span {
+    @include text('caption');
+    color: $text-tertiary;
+  }
+}
+
+.pastBtn {
+  @include reset-button;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 $space-4;
+  border: 1px solid $line-default;
+  border-radius: $radius-full;
+  background: $bg-surface;
+  @include text('body-s', 'medium');
+
+  &:hover {
+    border-color: var(--gray-300);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

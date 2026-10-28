@@ -1,0 +1,97 @@
+$thumb: 20px;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.histogram {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 40px;
+}
+
+.bar {
+  flex: 1;
+  border-radius: 2px;
+  background: var(--gray-200);
+  transition: background-color 0.15s ease;
+}
+
+.inRange {
+  background: var(--gray-400);
+}
+
+.slider {
+  position: relative;
+  height: $thumb;
+}
+
+.track,
+.fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 2px;
+}
+
+.track {
+  left: 0;
+  right: 0;
+  background: $line-default;
+}
+
+.fill {
+  background: $brand-ink;
+}
+
+// 두 range를 겹치고, 트랙은 숨기고 thumb만 클릭되게
+.thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  appearance: none;
+  background: none;
+  pointer-events: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: auto;
+    width: $thumb;
+    height: $thumb;
+    border-radius: 50%;
+    background: $bg-surface;
+    border: 2px solid $brand-ink;
+    box-shadow: $shadow-sm;
+    cursor: grab;
+  }
+
+  &::-moz-range-thumb {
+    pointer-events: auto;
+    width: $thumb - 4px;
+    height: $thumb - 4px;
+    border-radius: 50%;
+    background: $bg-surface;
+    border: 2px solid $brand-ink;
+    cursor: grab;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      @include focus-ring;
+    }
+  }
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  @include text('micro');
+  color: $text-tertiary;
+}

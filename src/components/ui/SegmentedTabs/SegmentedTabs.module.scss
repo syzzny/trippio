@@ -1,0 +1,83 @@
+.tabs {
+  display: flex;
+  gap: $space-1;
+  padding: $space-1;
+  border-radius: 14px;
+  background: $bg-muted;
+}
+
+.tab {
+  @include reset-button;
+  @include text('body', 'medium');
+  flex: 1;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: $space-2;
+  border-radius: 10px;
+  color: $text-tertiary;
+  transition: background-color 0.15s ease;
+
+  &:hover:not(.active) {
+    color: $text-secondary;
+  }
+}
+
+.active {
+  @include text('body', 'bold');
+  background: $bg-surface;
+  color: $text-primary;
+  box-shadow: $shadow-sm;
+  border: 1px solid $line-default;
+}
+
+.badge {
+  @include text('label');
+  color: $text-tertiary;
+}
+
+.sub {
+  @include text('label', 'medium');
+}
+
+.main {
+  @include text('caption', 'medium');
+}
+
+.tab:has(.sub) {
+  flex-direction: column;
+  gap: 1px;
+}
+
+// 밑줄형: 페이지 상단에서 목록을 나눌 때
+.underline {
+  gap: $space-6;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border-bottom: 1px solid $line-default;
+
+  .tab {
+    flex: none;
+    min-height: 44px;
+    padding: 0 2px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .active {
+    background: none;
+    box-shadow: none;
+    border: 0;
+    border-bottom: 2px solid $brand-ink;
+  }
+}
+
+.tab:focus-visible {
+  @include focus-ring;
+}

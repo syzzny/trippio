@@ -1,0 +1,88 @@
+.card {
+  @include reset-button;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid $line-default;
+  border-radius: $radius-lg;
+  background: $bg-surface;
+  text-align: left;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--gray-300);
+  }
+}
+
+.selected {
+  border: 1.5px solid $brand-ink;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
+
+  &:hover {
+    border-color: $brand-ink;
+  }
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.name {
+  @include text('title', 'bold');
+}
+
+.en {
+  @include text('micro');
+  letter-spacing: 0.08em;
+  color: $text-tertiary;
+}
+
+.tagline {
+  @include text('caption');
+  color: $text-secondary;
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  @include text('label');
+  color: $text-tertiary;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid $line-default;
+  flex-shrink: 0;
+
+  .selected & {
+    background: $brand-ink;
+    border-color: $brand-ink;
+    color: $text-inverse;
+  }
+}

@@ -1,0 +1,61 @@
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+  width: $rail-width;
+  padding: $space-2 0;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  color: var(--gray-500);
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: $text-primary;
+    background: $bg-muted;
+  }
+}
+
+.active {
+  color: $text-primary;
+  background: $bg-surface;
+  box-shadow: $shadow-sm;
+  border: 1px solid $line-default;
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sky-100), var(--primary-100));
+  @include text('caption', 'bold');
+}

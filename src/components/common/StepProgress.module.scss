@@ -1,0 +1,19 @@
+.bar {
+  display: flex;
+  flex: 1;
+  gap: $space-1;
+
+  span {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+  }
+}
+
+.on {
+  background: $brand-ink;
+}
+
+.off {
+  background: $line-default;
+}

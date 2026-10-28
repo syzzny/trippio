@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  padding: $space-2 $space-2 $space-2 $space-3;
+  border: 1px solid $line-default;
+  border-radius: $radius-md;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  @include text('body-s', 'medium');
+}
+
+.desc {
+  @include text('micro');
+  color: $text-tertiary;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-sm;
+  background: $bg-muted;
+
+  &:disabled {
+    color: var(--gray-300);
+    cursor: not-allowed;
+  }
+}
+
+.value {
+  @include text('body', 'medium');
+  min-width: 16px;
+  text-align: center;
+}

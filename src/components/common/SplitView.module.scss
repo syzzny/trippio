@@ -1,0 +1,83 @@
+.split {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: $space-3;
+  min-height: 0;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+}
+
+.panel {
+  @include card(0);
+  width: $panel-width;
+  min-width: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include mobile {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-top: -20px;
+    overflow: visible;
+    border: 0;
+    border-radius: $radius-xl $radius-xl 0 0;
+    box-shadow: 0 -6px 20px rgb(0 0 0 / 8%);
+
+    // 바텀시트 손잡이
+    &::before {
+      content: '';
+      align-self: center;
+      width: 36px;
+      height: 4px;
+      margin-top: 8px;
+      border-radius: $radius-full;
+      background: var(--gray-300);
+    }
+  }
+}
+
+.map {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  border: 1px solid $line-default;
+  background: var(--sky-100);
+
+  @include mobile {
+    // 지도 안의 레이어(z-index)가 위의 시트를 덮지 않도록 쌓임 맥락을 분리해요
+    isolation: isolate;
+    height: 46vh;
+    min-height: 300px;
+    flex: none;
+    border-radius: 0;
+    border: 0;
+  }
+}
+
+// 지도 위에 띄운 카드가 화면보다 길 때: 지도 높이를 내용에 맞추고 지도는 배경으로 깔아요
+.mapContent {
+  @include mobile {
+    height: auto;
+    min-height: 300px;
+
+    :global(.leaflet-container) {
+      position: absolute !important;
+      inset: 0;
+      height: auto !important;
+    }
+
+    // 배경 역할만 하므로 확대/축소 버튼은 숨겨요
+    :global(.leaflet-control-container) {
+      display: none;
+    }
+  }
+}
