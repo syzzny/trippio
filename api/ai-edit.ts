@@ -1,5 +1,5 @@
 // 배포(Vercel) 환경의 /api/ai-edit 엔드포인트. 개발 중에는 vite.config.ts의 미들웨어가 같은 로직을 실행해요.
-import { EditError, editItinerary, type EditRequest } from '../server/aiEdit';
+import { EditError, editItinerary, type EditRequest } from '../server/aiEdit.js';
 
 export async function POST(request: Request) {
   try {

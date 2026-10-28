@@ -1,4 +1,4 @@
-import { refinePlaces } from './ai';
+import { refinePlaces } from './ai.js';
 
 /**
  * 장소 검색 프록시 (Foursquare Places API)

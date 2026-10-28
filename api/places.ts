@@ -1,5 +1,5 @@
 // 배포(Vercel) 환경의 /api/places 엔드포인트. 개발 중에는 vite.config.ts의 미들웨어가 같은 로직을 실행해요.
-import { PlacesError, getPlacesNear, parseLatLng } from '../server/places';
+import { PlacesError, getPlacesNear, parseLatLng } from '../server/places.js';
 
 export async function GET(request: Request) {
   const { lat, lng, name } = parseLatLng(new URL(request.url));

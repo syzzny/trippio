@@ -5,7 +5,7 @@
  * 시간표·이동 구간·추천 이유는 클라이언트의 planner가 다시 계산해서,
  * AI가 시간을 잘못 계산하거나 없는 장소를 지어내도 일정이 깨지지 않게 해요.
  */
-import { chat } from './groq';
+import { chat } from './groq.js';
 
 export interface EditPlace {
   id: string;

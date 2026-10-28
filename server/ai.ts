@@ -9,8 +9,8 @@
  *  - 한 줄 소개
  * 를 받아 와요. 실패하면 원래 데이터를 그대로 써요 (일정 생성은 멈추지 않아요).
  */
-import type { ApiPlace } from './places';
-import { ENDPOINT, pickModel } from './groq';
+import type { ApiPlace } from './places.js';
+import { ENDPOINT, pickModel } from './groq.js';
 
 const TIMEOUT_MS = 40_000;
 
