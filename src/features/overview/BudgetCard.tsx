@@ -1,8 +1,10 @@
-import { useMemo } from 'react';
-import { EChart } from '@/components/common/EChart';
+import { useMemo, lazy, Suspense } from 'react';
 import { formatManwonFixed } from '@/lib/format';
 import { budgetNote, type BudgetSlice } from './summary';
 import styles from './Overview.module.scss';
+
+// ECharts는 용량이 커서 카드 내용이 먼저 보이고 차트는 뒤따라 불러와요
+const EChart = lazy(() => import('@/components/common/EChart').then((m) => ({ default: m.EChart })));
 
 const cssVar = (name: string) =>
   typeof window === 'undefined' ? '#ccc' : getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#ccc';
@@ -72,7 +74,9 @@ export function BudgetCard({ slices, limit }: BudgetCardProps) {
       </header>
       <div className={styles.budgetBody}>
         <div className={styles.donut}>
-          <EChart option={option} label={summary} className={styles.donutChart} />
+          <Suspense fallback={<div className={styles.donutChart} aria-hidden />}>
+            <EChart option={option} label={summary} className={styles.donutChart} />
+          </Suspense>
           <p className={styles.donutCenter} aria-hidden>
             <b>{formatManwonFixed(total)}</b>
             <span>예산 {Math.round(limit / 10_000)}만원</span>

@@ -17,6 +17,7 @@
   --sky-300: #8acfff;
   --sky-500: #38a9f5;
   --sky-700: #1b78bf;
+  --sky-800: #16679f;
   // Coral · Sun
   --coral-50: #fff3ef;
   --coral-500: #ff7a59;
@@ -31,6 +32,7 @@
   --gray-400: #adb4bd;
   --gray-500: #8a929c;
   --gray-600: #6b7280;
+  --gray-650: #5a616d;
   --gray-700: #4b5260;
   --gray-900: #222222;
 
@@ -39,8 +41,9 @@
   --color-bg-surface: var(--gray-0);
   --color-bg-muted: var(--gray-50);
   --color-text-primary: var(--gray-900);
-  --color-text-secondary: var(--gray-600);
-  --color-text-tertiary: var(--gray-500);
+  // 보조 텍스트는 흰 배경·연회색 배경 모두에서 WCAG AA(4.5:1)를 넘도록
+  --color-text-secondary: var(--gray-650);
+  --color-text-tertiary: var(--gray-600);
   --color-text-inverse: var(--gray-0);
   --color-line-default: var(--gray-200);
   --color-brand-ink: var(--gray-900);

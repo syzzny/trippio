@@ -33,11 +33,11 @@ export const StopCard = forwardRef<HTMLLIElement, Props>(function StopCard(
         className={styles.main}
         onClick={onSelect}
         aria-current={active ? 'true' : undefined}
-        aria-label={`${order}번째 장소 ${place.name}, ${stop.start}부터 ${stop.end}까지, 지도에서 보기`}
       >
         <span className={styles.order} aria-hidden>
           {order}
         </span>
+        <span className="sr-only">{order}번째 장소, </span>
         {!editing && <SmartImage src={place.image} alt="" className={styles.thumb} />}
         <span className={styles.info}>
           <span className={styles.time}>

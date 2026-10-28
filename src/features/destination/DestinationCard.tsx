@@ -13,7 +13,7 @@ interface Props {
 
 export function DestinationCard({ destination: d, selected, onSelect, tabIndex }: Props) {
   return (
-    <li>
+    <li role="none">
       <button
         type="button"
         role="radio"

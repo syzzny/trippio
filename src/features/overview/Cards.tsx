@@ -169,7 +169,7 @@ export function HighlightsCard({ days, maxSpend }: { days: DaySummary[]; maxSpen
       <ol className={styles.hlList}>
         {days.map((d) => (
           <li key={d.date}>
-            <Link to="/plan" state={{ day: d.index }} className={styles.hlRow} aria-label={`DAY ${d.index + 1} ${d.title} 일정 보기`}>
+            <Link to="/plan" state={{ day: d.index }} className={styles.hlRow}>
               <span className={styles.dayBadge}>DAY {d.index + 1} · {weekday(d.date)}</span>
               <SmartImage src={d.image} alt="" blend className={styles.hlIcon} />
               <span className={styles.hlText}>

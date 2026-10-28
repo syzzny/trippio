@@ -166,7 +166,12 @@
     background: $brand-sky-subtle;
 
     .wRain {
-      color: var(--sky-700);
+      color: var(--sky-800);
+    }
+
+    // 하늘색 배경 위에서도 대비 4.5:1 이상
+    .wTemp {
+      color: $text-secondary;
     }
   }
 }

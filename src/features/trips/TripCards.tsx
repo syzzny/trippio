@@ -65,13 +65,13 @@ export function TripCard({ trip, tone, onOpen, onRemove }: TripCardProps) {
         <SmartImage src={art.src} alt="" blend={!art.png} className={styles.coverArt} />
       </div>
       <div className={styles.body}>
-        <h3 id={titleId} className={styles.title}>
+        <h2 id={titleId} className={styles.title}>
           {/* 카드 전체를 누를 수 있게 제목 링크를 카드 크기로 늘려요 */}
           <button type="button" className={styles.stretch} onClick={onOpen}>
             {title}
           </button>
           <span className={styles.aiChip}>피오 추천</span>
-        </h3>
+        </h2>
         <p className={styles.dates}>
           {dateLabel(start)} – {dateLabel(end)}
         </p>

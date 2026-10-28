@@ -30,7 +30,7 @@
   justify-content: center;
   gap: 3px;
   @include text('label', 'medium');
-  color: var(--gray-500);
+  color: var(--gray-600);
   text-decoration: none;
 
   &:focus-visible {

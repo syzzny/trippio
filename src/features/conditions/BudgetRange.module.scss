@@ -26,7 +26,8 @@ $thumb: 20px;
 
 .slider {
   position: relative;
-  height: $thumb;
+  // 손가락으로 누르기 쉬운 최소 크기(24px)
+  height: 24px;
 }
 
 .track,
